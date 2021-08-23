@@ -31,7 +31,7 @@ class App extends React.Component {
     console.log("Executou render");
     return (
       <>
-        <input type="text" value={this.state.nome} onChange={this.modificarNome}/>
+        <input className="text-centralizado" type="text" value={this.state.nome} onChange={this.modificarNome}/>
         <h1> hello {this.state.nome}</h1>
         <h1> hello {this.props.nome}</h1>
 
