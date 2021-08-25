@@ -37,13 +37,13 @@ export default class CadastroProduto extends React.Component {
 
         try {
             this.service.salvar(produto);
-            this.setState({ sucesso: true });
+            this.limpaCampos();
+            this.setState({ sucesso: true });            
         }
         catch (erro) {
             const erros = erro.erros;
             this.setState({ erros: erros });
         }
-
     }
 
     limpaCampos = () => {
