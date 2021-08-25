@@ -7,7 +7,8 @@ const estadoInicial = {
     descricao: '',
     preco: 0,
     fornecedor: '',
-    sucesso: false
+    sucesso: false,
+    erros: []
 }
 
 export default class CadastroProduto extends React.Component {
@@ -33,8 +34,16 @@ export default class CadastroProduto extends React.Component {
             preco: this.state.preco,
             fornecedor: this.state.fornecedor
         };
-        this.service.salvar(produto);
-        this.setState({ sucesso: true });
+
+        try {
+            this.service.salvar(produto);
+            this.setState({ sucesso: true });
+        }
+        catch (erro) {
+            const erros = erro.erros;
+            this.setState({ erros: erros });
+        }
+
     }
 
     limpaCampos = () => {
@@ -51,11 +60,24 @@ export default class CadastroProduto extends React.Component {
 
                     {
                         this.state.sucesso &&
-                        <div class="alert alert-dismissible alert-success">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <div className="alert alert-dismissible alert-success">
+                            <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
                             <strong>Sucesso!</strong> Cadastro realizado com sucesso.
                         </div>
 
+                    }
+
+                    {
+                        this.state.erros.length > 0 &&
+
+                        this.state.erros.map(msg => {
+                            return (
+                                <div className="alert alert-dismissible alert-danger">
+                                    <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
+                                    <strong>Erro!</strong> {msg}
+                                </div>
+                            )
+                        })
                     }
 
 
