@@ -1,23 +1,23 @@
 import React, {useState} from 'react'
+import useStore from './somaReducer';
 
-function UseState() {
+function ReducerHook() {
 
-  const [numero, setNumero] = useState();
-  const [segundoNumero, setSegundoNumero] = useState();
-  const [resultado, setResultado] = useState();
+  const [numero, setNumero] = useState('');
+  const [segundoNumero, setSegundoNumero] = useState('');
+
+  const[store, dispatch] = useStore();
 
   const somar = () => {
     const numeroInt = parseInt(numero);
     const segNumeroInt = parseInt(segundoNumero);
 
-    setResultado(numeroInt + segNumeroInt);
+    dispatch({
+        type: 'SOMA',
+        payload: numeroInt + segNumeroInt
+    })
   }
 
-  // const [state, setState] = useState({
-  //   numero: 0,
-  //   segundoNumero: 0,
-  //   resultado: 0
-  // });
 
   return (
     <div>
@@ -30,9 +30,9 @@ function UseState() {
       <br />
       <button onClick={somar}>Somar</button> <br/>
       Resultado: <br/>
-      <input type="text" value={resultado} />
+      <input type="text" value={store.resultado} readOnly />
     </div>
   );
 }
 
-export default UseState;
+export default ReducerHook;
