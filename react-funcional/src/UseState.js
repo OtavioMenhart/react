@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
-function App() {
+function UseState() {
 
-  const [numero, setNumero] = useState('');
-  const [segundoNumero, setSegundoNumero] = useState('');
-  const [resultado, setResultado] = useState('');
+  const [numero, setNumero] = useState();
+  const [segundoNumero, setSegundoNumero] = useState();
+  const [resultado, setResultado] = useState();
 
   const somar = () => {
     const numeroInt = parseInt(numero);
@@ -13,10 +13,11 @@ function App() {
     setResultado(numeroInt + segNumeroInt);
   }
 
-  //[] executa uma vez, [] com variáveis sempre que a variavel for alterada, passar nada executa a toda alteração de variáveis
-  useEffect(() => {
-    console.log("variavel nmr: ", numero)
-  }, [numero]);
+  // const [state, setState] = useState({
+  //   numero: 0,
+  //   segundoNumero: 0,
+  //   resultado: 0
+  // });
 
   return (
     <div>
