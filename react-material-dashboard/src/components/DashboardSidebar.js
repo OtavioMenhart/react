@@ -24,12 +24,12 @@ const user = {
 
 const items = [
   {
-    href: '/dashboard',
+    href: '/app/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
   },
   {
-    href: '/tarefas',
+    href: '/app/tarefas',
     icon: FormatListBulleted,
     title: 'Tarefas'
   },

@@ -1,57 +1,44 @@
 import {
   Box,
-  Button,
   Card,
   CardContent,
   TextField,
-  InputAdornment,
-  SvgIcon
+  Grid,
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
 } from '@material-ui/core';
-import { Search as SearchIcon } from 'react-feather';
 
 const CustomerListToolbar = (props) => (
   <Box {...props}>
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'flex-end'
-      }}
-    >
-      <Button>
-        Import
-      </Button>
-      <Button sx={{ mx: 1 }}>
-        Export
-      </Button>
-      <Button
-        color="primary"
-        variant="contained"
-      >
-        Add customer
-      </Button>
-    </Box>
     <Box sx={{ mt: 3 }}>
       <Card>
         <CardContent>
-          <Box sx={{ maxWidth: 500 }}>
-            <TextField
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SvgIcon
-                      fontSize="small"
-                      color="action"
-                    >
-                      <SearchIcon />
-                    </SvgIcon>
-                  </InputAdornment>
-                )
-              }}
-              placeholder="Search customer"
-              variant="outlined"
-            />
-          </Box>
+          <Grid container>
+            <Grid item md={4}>
+              <TextField
+                placeholder="Descrição da tarefa"
+                label="Descrição:"
+                fullWidth
+              />
+            </Grid>
+            <Grid item md={4}>
+              <FormControl fullWidth>
+                <InputLabel>Categoria:</InputLabel>
+                <Select>
+                  <MenuItem value="">Selecione...</MenuItem>
+                  <MenuItem value="TRABALHO">Trabalho</MenuItem>
+                  <MenuItem value="ESTUDOS">Estudos</MenuItem>
+                  <MenuItem value="OUTROS">Outros</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item md={2}>
+              <Button variant="contained" color="primary">Adicionar</Button>
+            </Grid>
+          </Grid>
         </CardContent>
       </Card>
     </Box>
